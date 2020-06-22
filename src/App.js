@@ -44,17 +44,25 @@ class App extends Component {
 					hits: data.current
 				});
 				console.log(data);
-			})
-			.catch((error) => console.log("parsing failed", error));
+      })
+      
+      .catch((error) => console.log("parsing failed", error));
+      
 	}
 
   render() {
+    const unixTimestamp = this.state.hits.sunset * 1000;
+    const date = new Date(unixTimestamp);
+
+    // Now you can use built-in methods to convert to a local date.
+    const localized = date.toLocaleString();
   return (
     <div className="App">
 
-  <div> Current Temp: {this.state.hits.temp} F</div>
+  <div>Current Temp: {this.state.hits.temp} F</div>
   <div>Feels Like: {this.state.hits.feels_like} F</div>
   <div>Humidity: {this.state.hits.humidity}%</div>
+  <div>Sunset: {localized}</div>
   <div>UV Index: {this.state.hits.uvi} (Take caution when above 8) </div>
 
       {/* {this.state.hits.map((hitData, index) => (
