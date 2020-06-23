@@ -3,23 +3,23 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import WeatherCard from "./components/Card";
 
-class Weather extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+// class Weather extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {};
+//   }
 
-  render() {
-    return <div></div>;
-  }
-}
+//   render() {
+//     return <div></div>;
+//   }
+// }
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hits: [],
-      rain: [],
+      desc: [],
     };
   }
 
@@ -29,13 +29,13 @@ class App extends Component {
 
   fetchData() {
     fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=30.2672&lon=-97.7431&units=imperial&exclude=minutely&appid=d52bf8a50a9a8e883cbeec88eea8d31e`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=30.2672&lon=-97.7431&units=imperial&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_KEY}`
     )
       .then((json) => json.json())
       .then((data) => {
         this.setState({
           hits: data.current,
-          rain: data.current.rain,
+          desc: data.current.weather[0]
         });
         console.log(data);
       })
@@ -52,7 +52,7 @@ class App extends Component {
       <div>
         <NavBar />
         <div className="App">
-          <WeatherCard hits={this.state.hits} rain={this.state.rain} />
+          <WeatherCard hits={this.state.hits} desc={this.state.desc} />
           {/* <div>Current Temp: {this.state.hits.temp} F</div>
         <div>Feels Like: {this.state.hits.feels_like} F</div>
         <div>Humidity: {this.state.hits.humidity}%</div>

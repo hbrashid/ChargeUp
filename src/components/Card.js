@@ -41,12 +41,12 @@ export default function WeatherCard(props) {
           Current Weather
         </Typography>
         <Typography variant="subtitle1" component="h2">
-          <div>Current Temp: {props.hits.temp} F</div>
+          <div>{props.desc.main}</div>
+          <div>Temp: {props.hits.temp} F</div>
           <div>Feels Like: {props.hits.feels_like} F</div>
           <div>Humidity: {props.hits.humidity}%</div>
           <div>Sunset: {localized}</div>
           <div>UV Index: {props.hits.uvi} (Caution when above 8) </div>
-          <div>Rain: {props.rain["1h"]}mm (in last hour)</div>
         </Typography>
       </CardContent>
     </Card>
