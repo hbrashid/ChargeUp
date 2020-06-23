@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import NavBar from './components/NavBar'
-import WeatherCard from './components/Card'
+import NavBar from "./components/NavBar";
+import WeatherCard from "./components/Card";
 
 class Weather extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class App extends Component {
     super(props);
     this.state = {
       hits: [],
-      rain: []
+      rain: [],
     };
   }
 
@@ -35,7 +35,7 @@ class App extends Component {
       .then((data) => {
         this.setState({
           hits: data.current,
-          rain: data.current.rain
+          rain: data.current.rain,
         });
         console.log(data);
       })
@@ -47,25 +47,23 @@ class App extends Component {
     // const unixTimestamp = this.state.hits.sunset * 1000;
     // const date = new Date(unixTimestamp);
 
-    
     // const localized = date.toLocaleString();
     return (
       <div>
-      <NavBar />
-      <div className="App">
-        <WeatherCard hits={this.state.hits} rain={this.state.rain} />
-        {/* <div>Current Temp: {this.state.hits.temp} F</div>
+        <NavBar />
+        <div className="App">
+          <WeatherCard hits={this.state.hits} rain={this.state.rain} />
+          {/* <div>Current Temp: {this.state.hits.temp} F</div>
         <div>Feels Like: {this.state.hits.feels_like} F</div>
         <div>Humidity: {this.state.hits.humidity}%</div>
         <div>Sunset: {localized}</div>
         <div>UV Index: {this.state.hits.uvi} (Take caution when above 8) </div>
         <div>Rain: {this.state.rain['1h']}mm (in last hour)</div> */}
-        
 
-        {/* {this.state.hits.map((hitData, index) => (
+          {/* {this.state.hits.map((hitData, index) => (
 					<Weather key={index} forecast={hitData} />
 				))} */}
-      </div>
+        </div>
       </div>
     );
   }
