@@ -43,8 +43,8 @@ export default function WeatherCard(props) {
         <Typography variant="subtitle1" component="h2">
           <div>{props.desc.main}</div>
           <div>Temp: {props.hits.temp} F</div>
-          <div>Feels Like: {props.hits.feels_like} F</div>
           <div>Humidity: {props.hits.humidity}%</div>
+          <div>Feels Like: {props.hits.feels_like} F</div>
           <div>Sunset: {localized}</div>
           <div>UV Index: {props.hits.uvi} (Caution when above 8) </div>
         </Typography>
