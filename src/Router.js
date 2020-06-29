@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router'
 import cookie from 'cookie'
 import WeatherCard from './components/Card'
 import Login from './components/Login/Login'
+// import App from './App'
 
 // Write checkAuth function here
 // Check the cookies for a cookie called "loggedIn"

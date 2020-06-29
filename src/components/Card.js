@@ -25,10 +25,10 @@ const useStyles = makeStyles({
 export default function WeatherCard(props) {
   const classes = useStyles();
 
-  const unixTimestamp = props.hits.sunset * 1000;
-  const date = new Date(unixTimestamp);
+  // const unixTimestamp = props.hits.sunset * 1000;
+  // const date = new Date(unixTimestamp);
 
-  const localized = date.toLocaleString();
+  // const localized = date.toLocaleString();
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -45,7 +45,7 @@ export default function WeatherCard(props) {
           <div>Temp: {props.hits.temp} F</div>
           <div>Humidity: {props.hits.humidity}%</div>
           <div>Feels Like: {props.hits.feels_like} F</div>
-          <div>Sunset: {localized}</div>
+          {/* <div>Sunset: {localized}</div> */}
           <div>UV Index: {props.hits.uvi} (Caution when above 8) </div>
         </Typography>
       </CardContent>
