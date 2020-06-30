@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import WeatherCard from "./components/Card";
+import Router from "./Router";
+import { BrowserRouter } from "react-router-dom";
 
 // class Weather extends Component {
 //   constructor(props) {
@@ -35,7 +37,7 @@ class App extends Component {
       .then((data) => {
         this.setState({
           hits: data.current,
-          desc: data.current.weather[0]
+          desc: data.current.weather[0],
         });
         console.log(data);
       })
@@ -50,9 +52,13 @@ class App extends Component {
     // const localized = date.toLocaleString();
     return (
       <div>
-        <NavBar />
+        <BrowserRouter>
+          <NavBar />
+          <Router />
+        </BrowserRouter>
+        {/* <NavBar /> */}
         <div className="App">
-          <WeatherCard hits={this.state.hits} desc={this.state.desc} />
+          {/* <WeatherCard hits={this.state.hits} desc={this.state.desc} /> */}
           {/* <div>Current Temp: {this.state.hits.temp} F</div>
         <div>Feels Like: {this.state.hits.feels_like} F</div>
         <div>Humidity: {this.state.hits.humidity}%</div>
