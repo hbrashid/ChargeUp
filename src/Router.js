@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
 import cookie from 'cookie'
-import WeatherCard from './components/Card'
+import App from './components/Card'
 import Login from './components/Login/Login'
 // import App from './App'
 
@@ -30,7 +30,7 @@ const Router = () => {
     return (
         <Switch>
             <Route path="/login" component={Login} />
-            <ProtectedRoute exact path="/" component={WeatherCard} />
+            <ProtectedRoute exact path="/" component={App} />
             
         </Switch>
     );
