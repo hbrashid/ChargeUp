@@ -1,13 +1,34 @@
 import React, { Component } from "react";
 import "../App.css";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 // import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 // import Router from "./Router";
 // import { BrowserRouter } from "react-router-dom";
+
+const styles = {
+  root: {
+    maxWidth: 450,
+    margin: "0 auto",
+  },
+  MuiCardContent: {
+    padding: 0,
+    "&:last-child": {
+      paddingBottom: 2,
+    },
+  },
+  title: {
+    fontSize: 14,
+    textAlign: 'center',
+  },
+  text: {
+    textAlign: 'center'
+  }
+};
 
 class App extends Component {
   constructor(props) {
@@ -39,28 +60,13 @@ class App extends Component {
   }
 
   render() {
-    const useStyles = makeStyles({
-      root: {
-        maxWidth: 450,
-        margin: "0 auto",
-      },
-      MuiCardContent: {
-        padding: 0,
-        "&:last-child": {
-          paddingBottom: 2,
-        },
-      },
-      title: {
-        fontSize: 14,
-      },
-    });
-
     const unixTimestamp = this.state.hits.sunset * 1000;
     const date = new Date(unixTimestamp);
 
     const localized = date.toLocaleString();
 
-    const classes = useStyles();
+    const { classes } = this.props;
+
     return (
       <Card className={classes.root} variant="outlined">
         <CardContent className={classes.MuiCardContent}>
@@ -71,13 +77,15 @@ class App extends Component {
           >
             Current Weather
           </Typography>
-          <Typography variant="subtitle1" component="h2">
+          <Typography className={classes.text} variant="subtitle1" component="h2">
             <div>{this.state.desc.main}</div>
             <div>Temp: {this.state.hits.temp} F</div>
             <div>Feels Like: {this.state.hits.feels_like} F</div>
             <div>Humidity: {this.state.hits.humidity}%</div>
             <div>Sunset: {localized}</div>
-            <div>UV Index: {this.state.hits.uvi} (Take caution when above 8)</div>
+            <div>
+              UV Index: {this.state.hits.uvi} (Take caution when above 8)
+            </div>
 
             {/* <div>Humidity: {props.hits.humidity}%</div>
           <div>Feels Like: {props.hits.feels_like} F</div>
@@ -90,4 +98,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
