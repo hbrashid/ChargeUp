@@ -1,20 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import WeatherCard from "./components/Card";
+// import WeatherCard from "./components/Card";
 import Router from "./Router";
 import { BrowserRouter } from "react-router-dom";
 
-// class Weather extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
-
-//   render() {
-//     return <div></div>;
-//   }
-// }
 
 class App extends Component {
   constructor(props) {
