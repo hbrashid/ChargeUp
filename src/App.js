@@ -10,30 +10,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hits: [],
-      desc: [],
+      // hits: [],
+      // desc: [],
     };
   }
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  // componentDidMount() {
+  //   this.fetchData();
+  // }
 
-  fetchData() {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=30.2672&lon=-97.7431&units=imperial&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_KEY}`
-    )
-      .then((json) => json.json())
-      .then((data) => {
-        this.setState({
-          hits: data.current,
-          desc: data.current.weather[0],
-        });
-        console.log(data);
-      })
+  // fetchData() {
+  //   fetch(
+  //     `https://api.openweathermap.org/data/2.5/onecall?lat=30.2672&lon=-97.7431&units=imperial&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_KEY}`
+  //   )
+  //     .then((json) => json.json())
+  //     .then((data) => {
+  //       this.setState({
+  //         hits: data.current,
+  //         desc: data.current.weather[0],
+  //       });
+  //       console.log(data);
+  //     })
 
-      .catch((error) => console.log("parsing failed", error));
-  }
+  //     .catch((error) => console.log("parsing failed", error));
+  // }
 
   render() {
     // const unixTimestamp = this.state.hits.sunset * 1000;

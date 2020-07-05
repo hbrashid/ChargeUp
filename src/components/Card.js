@@ -5,6 +5,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 // import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
+import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
@@ -24,8 +25,14 @@ const styles = {
   },
   text: {
     textAlign: 'center'
-  }
+  },
+   'MuiTextField-root': {
+      margin: '85%',
+      width: '25ch',
+    },
+  
 };
+
 
 class App extends Component {
   constructor(props) {
@@ -65,6 +72,12 @@ class App extends Component {
     const { classes } = this.props;
 
     return (
+      
+     
+
+
+
+          <div>
       <Card className={classes.root} variant="outlined">
         <CardContent className={classes.MuiCardContent}>
           <Typography
@@ -77,8 +90,8 @@ class App extends Component {
           <Typography className={classes.text} variant="subtitle1" component="h2">
             <div>{this.state.desc.main}</div>
             <div>Temp: {this.state.hits.temp} F</div>
-            <div>Feels Like: {this.state.hits.feels_like} F</div>
             <div>Humidity: {this.state.hits.humidity}%</div>
+            <div>Feels Like: {this.state.hits.feels_like} F</div>
             <div>Sunset: {localized}</div>
             <div>
               UV Index: {this.state.hits.uvi} (Take caution when above 8)
@@ -91,6 +104,38 @@ class App extends Component {
           </Typography>
         </CardContent>
       </Card>
+      <div>
+      <form className='field1' noValidate autoComplete="off">
+        <TextField
+          id="standard-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </form>
+      
+      
+
+      <form className='field2' noValidate autoComplete="off">
+        <TextField
+          id="standard-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </form>
+      </div>
+      </div>
+      
+
+
+
+
+      
     );
   }
 }
