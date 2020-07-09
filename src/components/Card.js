@@ -64,6 +64,7 @@ class App extends Component {
   }
 
 // To capture user input from text fields
+// Have separate onChange for each input field. Previous state + new state(e.target.value), not overriding. Add separate state. Have ideal values at top of file.
   onChange = e => {
     this.setState({
       text: e.target.value
