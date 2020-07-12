@@ -65,11 +65,21 @@ class App extends Component {
 
 // To capture user input from text fields
 // Have separate onChange for each input field. Previous state + new state(e.target.value), not overriding. Add separate state. Have ideal values at top of file.
-  onChange = e => {
+  onChangeOutdoor = e => {
     this.setState({
       text: e.target.value
     })
   }
+
+  onChangeWater = e => {
+    this.setState({
+      text: e.target.value
+    })
+  }
+
+  // updateProgress = (field, val) => {
+  //   this.setState({ [field]: val });
+  // };
 
   render() {
     const unixTimestamp = this.state.hits.sunset * 1000;
@@ -117,7 +127,8 @@ class App extends Component {
               id="standard-number"
               label="Outdoor Time"
               type="number"
-              onChange={this.onChange}
+              onChange={this.onChangeOutdoor}
+              // onSubmit={this.updateProgress("percent", this.state.text)}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -129,7 +140,7 @@ class App extends Component {
               id="standard-number"
               label="Water Consumption"
               type="number"
-              onChange={this.onChange}
+              onChange={this.onChangeWater}
               InputLabelProps={{
                 shrink: true,
               }}
