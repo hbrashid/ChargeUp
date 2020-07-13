@@ -109,8 +109,8 @@ class App extends Component {
         outdoorPercentage: OutdoorCo
       });
       this.setState({
-        hits: [],
-        desc: [],
+        // hits: [],
+        // desc: [],
         outdoor: 0,
         water: 0
       });
