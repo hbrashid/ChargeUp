@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
-import {ProgressBar} from './Progress'
+// import {ProgressBar} from './Progress'
 import Card from "@material-ui/core/Card";
 // import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 const styles = {
   root: {
@@ -31,6 +32,9 @@ const styles = {
     margin: "85%",
     width: "25ch",
   },
+  barColorPrimary: {
+    backgroundColor: 'green',
+  }
 };
 
 class App extends Component {
@@ -39,7 +43,13 @@ class App extends Component {
     this.state = {
       hits: [],
       desc: [],
-      text: "",
+      outdoor: 0,
+      water: 0,
+      value: null,
+      outBeforCalc: [],
+      waterBeforCalc: [],
+      waterPercentage: 0,
+      outdoorPercentage: 0
     };
   }
 
@@ -67,14 +77,44 @@ class App extends Component {
 // Have separate onChange for each input field. Previous state + new state(e.target.value), not overriding. Add separate state. Have ideal values at top of file.
   onChangeOutdoor = e => {
     this.setState({
-      text: e.target.value
+      outdoor: +e.target.value
     })
   }
 
   onChangeWater = e => {
     this.setState({
-      text: e.target.value
+      water: +e.target.value
     })
+  }
+
+  Formula(e) {
+    e.preventDefault();
+    let joinedOut = this.state.outBeforCalc.concat(this.state.outdoor);
+    this.setState({ outBeforCalc: joinedOut });
+
+    let joinedWater = this.state.waterBeforCalc.concat(this.state.water);
+    this.setState({ waterBeforCalc: joinedWater });
+
+    let OutdoorCo;
+    let WaterCo;
+    this.setState({}, () => {
+      let outSum = this.state.outBeforCalc.reduce((a, b) => a + b, 0);
+      OutdoorCo = (outSum * 100) / 15;
+      let waterSum = this.state.waterBeforCalc.reduce((a, b) => a + b, 0);
+      WaterCo = (waterSum * 100) / 80;
+      const sum = (WaterCo + OutdoorCo) / 2;
+      this.setState({
+        value: +sum,
+        waterPercentage: WaterCo,
+        outdoorPercentage: OutdoorCo
+      });
+      this.setState({
+        hits: [],
+        desc: [],
+        outdoor: 0,
+        water: 0
+      });
+    });
   }
 
   // updateProgress = (field, val) => {
@@ -82,6 +122,13 @@ class App extends Component {
   // };
 
   render() {
+
+    const keyPress = e => {
+      if (e.key === "Enter") {
+        this.Formula();
+      }
+    };
+
     const unixTimestamp = this.state.hits.sunset * 1000;
     const date = new Date(unixTimestamp);
 
@@ -121,33 +168,57 @@ class App extends Component {
             </Typography>
           </CardContent>
         </Card>
+        <form onSubmit={e => this.Formula(e)}>
         <div>
-          <form className="field1" noValidate autoComplete="off">
+          <div className="field1">
             <TextField
-              id="standard-number"
+              id="standard-number1"
               label="Outdoor Time"
               type="number"
+              value={`${this.state.outdoor}`}
               onChange={this.onChangeOutdoor}
               // onSubmit={this.updateProgress("percent", this.state.text)}
               InputLabelProps={{
                 shrink: true,
               }}
             />
-          </form>
+            outdoor percentage : {this.state.outdoorPercentage}
+            </div>
+          
 
-          <form className="field2" noValidate autoComplete="off">
+          <div className="field2" noValidate autoComplete="off">
             <TextField
-              id="standard-number"
+              id="standard-number2"
               label="Water Consumption"
               type="number"
+              value={`${this.state.water}`}
               onChange={this.onChangeWater}
               InputLabelProps={{
                 shrink: true,
               }}
             />
-          </form>
+            water percentage : {this.state.waterPercentage}
+          </div>
         </div>
-        <ProgressBar width={400} percent={this.state.percent} />
+        <button style={{ marginTop: 25, marginLeft: '45%' }} type="submit" onKeyDown={keyPress}>
+            {" "}
+             Get Energy Level{" "}
+          </button>
+          </form>
+          <div className="progress-div">
+          <LinearProgress
+          classes={{barColorPrimary: classes.barColorPrimary}}
+            variant="determinate"
+            style={{ margin: 20, width: 400, marginLeft: '36%', height: 50 }}
+            value={this.state.value <= 100 ? this.state.value : 100}
+          />
+          <h4>
+            {typeof this.state.value === "number"
+              ? `${this.state.value}%`
+              : this.state.value}
+          </h4>
+        </div>
+        {/* <ProgressBar width={400} percent={this.state.percent} /> */}
       </div>
     );
   }
