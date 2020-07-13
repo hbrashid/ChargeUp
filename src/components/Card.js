@@ -4,7 +4,7 @@ import "../App.css";
 import Card from "@material-ui/core/Card";
 // import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
@@ -200,10 +200,10 @@ class App extends Component {
             water percentage : {this.state.waterPercentage}
           </div>
         </div>
-        <button style={{ marginTop: 25, marginLeft: '45%' }} type="submit" onKeyDown={keyPress}>
+        <Button variant="contained" color="secondary" style={{ marginTop: 25, marginLeft: '44%' }} type="submit" onKeyDown={keyPress}>
             {" "}
              Get Energy Level{" "}
-          </button>
+          </Button>
           </form>
           <div className="progress-div">
           <LinearProgress
@@ -212,7 +212,7 @@ class App extends Component {
             style={{ margin: 20, width: 400, marginLeft: '36%', height: 50 }}
             value={this.state.value <= 100 ? this.state.value : 100}
           />
-          <h4>
+          <h4 style={{marginLeft:"45%"}}>
             {typeof this.state.value === "number"
               ? `${this.state.value}%`
               : this.state.value}
