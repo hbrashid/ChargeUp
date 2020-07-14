@@ -33,7 +33,7 @@ const styles = {
     width: "25ch",
   },
   barColorPrimary: {
-    backgroundColor: 'green',
+    backgroundColor: '#17b31f',
   }
 };
 
@@ -46,8 +46,8 @@ class App extends Component {
       outdoor: 0,
       water: 0,
       value: null,
-      outBeforCalc: [],
-      waterBeforCalc: [],
+      outBeforeCalc: [],
+      waterBeforeCalc: [],
       waterPercentage: 0,
       outdoorPercentage: 0
     };
@@ -89,18 +89,18 @@ class App extends Component {
 
   Formula(e) {
     e.preventDefault();
-    let joinedOut = this.state.outBeforCalc.concat(this.state.outdoor);
-    this.setState({ outBeforCalc: joinedOut });
+    let joinedOut = this.state.outBeforeCalc.concat(this.state.outdoor);
+    this.setState({ outBeforeCalc: joinedOut });
 
-    let joinedWater = this.state.waterBeforCalc.concat(this.state.water);
-    this.setState({ waterBeforCalc: joinedWater });
+    let joinedWater = this.state.waterBeforeCalc.concat(this.state.water);
+    this.setState({ waterBeforeCalc: joinedWater });
 
     let OutdoorCo;
     let WaterCo;
     this.setState({}, () => {
-      let outSum = this.state.outBeforCalc.reduce((a, b) => a + b, 0);
+      let outSum = this.state.outBeforeCalc.reduce((a, b) => a + b, 0);
       OutdoorCo = (outSum * 100) / 15;
-      let waterSum = this.state.waterBeforCalc.reduce((a, b) => a + b, 0);
+      let waterSum = this.state.waterBeforeCalc.reduce((a, b) => a + b, 0);
       WaterCo = (waterSum * 100) / 80;
       const sum = (WaterCo + OutdoorCo) / 2;
       this.setState({
