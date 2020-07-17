@@ -65,7 +65,7 @@ class App extends Component {
       .then((data) => {
         this.setState({
           hits: data.current,
-          desc: data.current.weather[0],
+          desc: data.current.weather[0]
         });
         console.log(data);
       })
