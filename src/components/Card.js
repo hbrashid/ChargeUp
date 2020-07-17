@@ -59,8 +59,7 @@ class App extends Component {
 
   fetchData() {
     fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=30.2672&lon=-97.7431&units=imperial&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_KEY}`
-    )
+      "http://api.openweathermap.org/data/2.5/onecall?lat=30.2672&lon=-97.7431&units=imperial&exclude=minutely&appid=f77a6dfeda22512701832940626de2f5")
       .then((json) => json.json())
       .then((data) => {
         this.setState({
