@@ -117,6 +117,40 @@ class App extends Component {
     });
   }
 
+  addHealthData = () => {
+    let addHealthDataUrl = "http://localhost:10240/weather/save"
+
+    let queryParams = {
+      'userId': this.state.userId,
+      'sun': this.state.outdoorPercentage,
+      'water': this.state.waterPercentage,
+      'progress': this.state.value
+    }
+    fetch(addHealthDataUrl, {
+      method: 'post',
+      body: JSON.stringify(queryParams),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.code == "200") {
+          this.props.sendMessage("Your data has been saved!")
+        } else {
+          this.props.sendMessage(`We've encountered a problem.`);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
+  } 
+
+
+  
+
+
+
   // updateProgress = (field, val) => {
   //   this.setState({ [field]: val });
   // };
@@ -168,7 +202,7 @@ class App extends Component {
             </Typography>
           </CardContent>
         </Card>
-        <form onSubmit={e => this.Formula(e)}>
+        <form onSubmit={e => this.Formula(e) && this.addHealthData }>
         <div>
           <div className="field1">
             <TextField

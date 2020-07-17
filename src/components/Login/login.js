@@ -49,13 +49,13 @@ class App extends Component {
           })
         }        
           else {
-            this.props.sendMessage("I'm not finding it")
+            this.props.sendMessage("Can't find it")
             console.log("error code", data.code);
           }
       })
       .catch((error) => {
         console.log('Error: ', error);
-        this.props.sendMessage("Yikes. Check the logs");
+        this.props.sendMessage("Check logs");
       })
   }
 
