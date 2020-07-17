@@ -65,6 +65,7 @@ class App extends Component {
         return (
           <div className="App">
             <Container maxWidth="sm">
+                <h4>SIGN UP</h4>
               <form className="login-form" onSubmit={this.register}>
                 <TextField
                   required
