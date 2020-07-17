@@ -4,7 +4,7 @@ import { TextField, Button, Container } from "@material-ui/core";
 
 class App extends Component {
   state = {
-    username: "",
+    email: "",
     password: "",
   };
 
@@ -32,8 +32,8 @@ class App extends Component {
               required
               onChange={this.handleTextChange}
               value={this.state.username}
-              name="username"
-              label="Username"
+              name="email"
+              label="email"
               type="text"
             />
             <TextField
@@ -41,7 +41,7 @@ class App extends Component {
               onChange={this.handleTextChange}
               value={this.state.password}
               name="password"
-              label="Password"
+              label="password"
               type="password"
             />
             <Button

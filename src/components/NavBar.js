@@ -47,6 +47,9 @@ export default function NavBar() {
                         }}>
                         Logout
                     </li>
+                    <li className="nav-list-item">
+                        <Link to="/signup">Sign Up</Link>
+                    </li>
                 </ul>
           {/* <Button color="inherit"></Button> */}
         </Toolbar>

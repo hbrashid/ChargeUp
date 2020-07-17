@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router'
 import cookie from 'cookie'
 import App from './components/Card'
 import Login from './components/Login/login'
+import SignUp from './components/Login/signup'
 // import App from './App'
 
 // Write checkAuth function here
@@ -29,6 +30,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
 const Router = () => {
     return (
         <Switch>
+            <Route path="/signup" component={SignUp} />
             <Route path="/login" component={Login} />
             <ProtectedRoute exact path="/" component={App} />
             
