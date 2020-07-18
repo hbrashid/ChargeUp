@@ -20,7 +20,7 @@ class App extends Component {
     registerUser = () => {
 
     const postData = { email: this.state.email, password: this.state.password };
-    const registerUrl = "http://localhost:10240/account/register";
+    const registerUrl = "https://chargeupapi.herokuapp.com/account/register";
 
     console.log(postData);
     fetch(registerUrl, {
