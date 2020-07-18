@@ -121,8 +121,8 @@ class App extends Component {
 
     let queryParams = {
       'userId': this.state.userId,
-      'sun': this.state.outdoorPercentage,
-      'water': this.state.waterPercentage,
+      'sun': this.state.outdoor,
+      'water': this.state.water,
       'progress': this.state.value
     }
     fetch(addHealthDataUrl, {

@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Back-end: https://github.com/hbrashid/chargeup-api
+
 ## Core Functions
 
 1. Sign-in/Sign-up
