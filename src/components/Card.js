@@ -49,7 +49,8 @@ class App extends Component {
       outBeforeCalc: [],
       waterBeforeCalc: [],
       waterPercentage: 0,
-      outdoorPercentage: 0
+      outdoorPercentage: 0,
+      userId: null
     };
   }
 
@@ -144,16 +145,42 @@ class App extends Component {
       .catch((error) => {
         console.error('Error:', error);
       })
-  } 
-
-
+  }
   
+  // getUserId =() => {
+  //   let getUserIdUrl = `http://localhost:10240/weather/fetch?user=${this.state.userId}`
+
+  //   let queryParams = {
+  //     "userId": this.state.userId
+  //   }
+
+  //   fetch(getUserIdUrl, {
+  //     method: 'get',
+  //     body: JSON.stringify(queryParams),
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //         .then(data => {
+  //           if (data.code == "200") {
+  //               if (data.userId) {
+  //               this.setState({
+  //                   userId: data.userId
+  //               })
+  //             }
+  //           } else {
+  //             console.log(`We've encountered a problem`);
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.error('Error:', error);
+  //         })
+      
+
+  // }
 
 
-
-  // updateProgress = (field, val) => {
-  //   this.setState({ [field]: val });
-  // };
 
   render() {
 
