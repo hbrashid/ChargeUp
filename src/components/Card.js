@@ -55,6 +55,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchData();
+    this.addHealthData();
   }
 
   fetchData() {
@@ -158,7 +159,8 @@ class App extends Component {
 
     const keyPress = e => {
       if (e.key === "Enter") {
-        this.Formula();
+        this.Formula()
+        this.addHealthData();
       }
     };
 
